@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace json_process_from_jsonfile
 {
@@ -20,11 +21,14 @@ namespace json_process_from_jsonfile
         {
             List<Megrendeles> res = new List<Megrendeles>();
             StreamReader reader = new StreamReader("megrendelesek.json");
-            while (!reader.EndOfStream)
+            var json = reader.ReadToEnd();
+            var jsonArr = JArray.Parse(json);
+
+            foreach (var item in jsonArr)
             {
-                string line = reader.ReadLine();
-                Console.WriteLine(line);
+                
             }
+            Console.WriteLine(jsonArr[0]);
             return res;
         }
     }
