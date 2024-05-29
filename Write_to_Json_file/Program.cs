@@ -19,6 +19,7 @@ namespace Write_to_Json_file
             _email = email;
         }
     }
+    
     internal class Program
     {
         static void Main(string[] args)
