@@ -34,5 +34,10 @@ namespace json_process_from_jsonfile
         public int Darabszam_ { get => darabszam_; set => darabszam_ = value; }
         public int Polc_szama_ { get => polc_szama_; set => polc_szama_ = value; }
         public DateTime Rogzit_datum { get => rogzit_datum; set => rogzit_datum = value; }
+
+        public override string ToString()
+        {
+            return $"\tanyagtípus: {Anyagtipusa_}\n\tvastagsag: {Vastagsag_}\n\tméret: {Meret_}";
+        }
     }
 }

@@ -34,5 +34,13 @@ namespace json_process_from_jsonfile
         public int FelhasznaltMennyiseg_ { get => felhasznaltMennyiseg_; set => felhasznaltMennyiseg_ = value; }
         internal Dolgozo Dolgozo_ { get => dolgozo_; set => dolgozo_ = value; }
         internal Alapanyag Alapanyag_ { get => alapanyag_; set => alapanyag_ = value; }
+
+        public override string ToString()
+        {
+            
+            return $"megrendelés id: {Id_}\nmunkalap száma: {MunkalapSzama_}\nkezdés: " +
+                $"{DatumKezdes_}\nbefejezes: {DatumBefejezes_}\nmennyiség: {FelhasznaltMennyiseg_}\n" +
+                $"dolgozó:\n{Dolgozo_}\nalapanyag:\n{Alapanyag_}\n\n";
+        }
     }
 }

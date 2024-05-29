@@ -14,6 +14,10 @@ namespace json_process_from_jsonfile
         static void Main(string[] args)
         {
             megrendelesek = beolvasas();
+            foreach (var item in megrendelesek)
+            {
+                Console.WriteLine(item);
+            }
             Console.ReadKey();
         }
 
@@ -26,9 +30,33 @@ namespace json_process_from_jsonfile
 
             foreach (var item in jsonArr)
             {
+                Dolgozo dolgozo = new Dolgozo(
+                    item["dolgozo"]["username"].Value<string>(),
+                    item["dolgozo"]["first_name"].Value<string>(),
+                    item["dolgozo"]["last_name"].Value<string>()
+                    );
+                Alapanyag alapanyag = new Alapanyag(
+                    item["alapanyag"]["id"].Value<int>(),
+                    item["alapanyag"]["anyagtipusa"].Value<string>(),
+                    item["alapanyag"]["vastagsag_valaszt"].Value<double>(),
+                    item["alapanyag"]["meret_valaszt"].Value<string>(),
+                    item["alapanyag"]["darabszam"].Value<int>(),
+                    item["alapanyag"]["polc_szama"].Value<int>(),
+                    item["alapanyag"]["rogzit_datum"].Value<DateTime>()
+                    );
+                Megrendeles megrendeles = new Megrendeles(
+                    item["id"].Value<int>(),
+                    dolgozo,
+                    item["munkalap_szama"].Value<string>(),
+                    alapanyag,
+                    item["datumKezdes"].Value<DateTime>(),
+                    item["datumBefejezes"].Value<DateTime>(),
+                    item["felhasznaltMennyiseg"].Value<int>()
+                    );
                 
+                res.Add(megrendeles);
             }
-            Console.WriteLine(jsonArr[0]);
+            
             return res;
         }
     }

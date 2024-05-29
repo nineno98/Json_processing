@@ -5,16 +5,16 @@
         "username":"raktaros",
         "first_name":"Horváth",
         "last_name":"Károly"},
-        "munkalap_szama":"24/2345",
-        "alapanyag":{
-            "id":41,
-            "anyagtipusa":"Szénacél",
-            "vastagsag_valaszt":"1.0",
-            "meret_valaszt":"1250X2500",
-            "darabszam":10,
-            "polc_szama":5,
-            "rogzit_datum":"2024-03-29"
-        },
+    "munkalap_szama":"24/2345",
+    "alapanyag":{
+        "id":41,
+        "anyagtipusa":"Szénacél",
+        "vastagsag_valaszt":"1.0",
+        "meret_valaszt":"1250X2500",
+        "darabszam":10,
+        "polc_szama":5,
+        "rogzit_datum":"2024-03-29"
+    },
     "datumKezdes":"2024-03-15",
     "datumBefejezes":"2024-03-15",
     "felhasznaltMennyiseg":1
