@@ -71,7 +71,7 @@ namespace Write_to_Json_file
         {
             do
             {
-                Console.WriteLine("Új felhasználó: 1 |Felhasználók lista: 2 | Kilépés: 3");
+                Console.WriteLine("Új felhasználó: 1 |Felhasználók lista: 2 |Elem törlése: 3| Kilépés: 4");
                 string valaszt = Console.ReadLine();
                 if (valaszt.Equals("1"))
                 {
@@ -85,6 +85,19 @@ namespace Write_to_Json_file
                     }
                 }
                 else if (valaszt.Equals("3"))
+                {
+                    Console.WriteLine("Add meg a törölni kívánt felhasználó nevét:");
+                    string keresendoNev = beker();
+                    if (felhasznalok.Find(x => x.Name.Equals(keresendoNev)) != null)
+                    {
+                        var torlendoFelhaszn = felhasznalok.Single(x => x.Name.Equals(keresendoNev));
+                        felhasznalok.Remove(torlendoFelhaszn);
+
+                        string json = JsonConvert.SerializeObject(felhasznalok);
+                        File.WriteAllText("result.json", json);
+                    }
+                }
+                else if (valaszt.Equals("4"))
                 {
                     System.Environment.Exit(0);
                 }
