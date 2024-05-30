@@ -40,7 +40,7 @@ namespace Write_to_Json_file
         static List<Felhasznalo> felhasznalok = new List<Felhasznalo>();
         static void Main(string[] args)
         {
-            listafeltolt();
+            listafeltolt();            
             menubetolt();       
             
             
@@ -97,7 +97,7 @@ namespace Write_to_Json_file
 
         private static void hozzafuz()
         {
-            Felhasznalo ujfelhasznalo = ujFelhasznalo(2);
+            Felhasznalo ujfelhasznalo = ujFelhasznalo(felhasznalok.Select(x => x.Id).Max()+1);
             felhasznalok.Add(ujfelhasznalo);
 
             string json = JsonConvert.SerializeObject(felhasznalok);
