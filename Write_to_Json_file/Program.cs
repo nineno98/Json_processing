@@ -7,6 +7,7 @@ using System.IO;
 using Newtonsoft;
 using Newtonsoft.Json;
 using System.ComponentModel.Design;
+using Newtonsoft.Json.Linq;
 
 
 namespace Write_to_Json_file
@@ -39,27 +40,57 @@ namespace Write_to_Json_file
         static List<Felhasznalo> felhasznalok = new List<Felhasznalo>();
         static void Main(string[] args)
         {
-
-            menubetolt();
-
-            //string json = JsonConvert.SerializeObject(felhasznalok);
-            //Console.WriteLine(json);
-            //File.WriteAllText("result.json", json);
-            string json = File.ReadAllText("result.json");
+            listafeltolt();
+            menubetolt();       
+            
             
             
             Console.ReadKey();
+        }
+
+        private static void listafeltolt()
+        {
+            StreamReader sr = new StreamReader("result.json");
+            var json = sr.ReadToEnd();
+            var jsonArr = JArray.Parse(json);
+            foreach (var item in jsonArr)
+            {
+                Felhasznalo felhasznalo = new Felhasznalo(
+                    item["Id"].Value<int>(),
+                    item["Name"].Value<string>(),
+                    item["Email"].Value<string>()                   
+                    );
+                felhasznalok.Add( felhasznalo );
+            }
+            
+            sr.Close();
+
         }
 
         private static void menubetolt()
         {
             do
             {
-                Console.WriteLine("Új felhasználó: 1 |Felhasználók lista: 2| Kilépés: 3");
+                Console.WriteLine("Új felhasználó: 1 |Felhasználók lista: 2 | Kilépés: 3");
                 string valaszt = Console.ReadLine();
                 if (valaszt.Equals("1"))
                 {
                     hozzafuz();
+                }
+                else if (valaszt.Equals("2"))
+                {
+                    foreach (var item in felhasznalok)
+                    {
+                        Console.WriteLine(item);
+                    }
+                }
+                else if (valaszt.Equals("3"))
+                {
+                    System.Environment.Exit(0);
+                }
+                else
+                {
+                    Console.WriteLine("Csak a megadott számok közzül válassz.");
                 }
             } while (true);
         }
@@ -68,30 +99,11 @@ namespace Write_to_Json_file
         {
             Felhasznalo ujfelhasznalo = ujFelhasznalo(2);
             felhasznalok.Add(ujfelhasznalo);
-            
-        }
 
-        static private List<Felhasznalo> feltolt()
-        {
-            List<Felhasznalo> felhasznList = new List<Felhasznalo>();
-            int id = 1;
-            do
-            {
-                Console.WriteLine("Új felhasználó: 1 | Kilépés: 2");
-                string bevitel = Console.ReadLine();
-                if (bevitel.Equals("1"))
-                {                  
-                    felhasznList.Add(ujFelhasznalo(id));
-                    id++;
-                }
-                else
-                {
-                    break;
-                }
-                
-            } while (true);
-            return felhasznList;
-        }
+            string json = JsonConvert.SerializeObject(felhasznalok);
+            File.WriteAllText("result.json", json);
+            
+        }       
 
         static private Felhasznalo ujFelhasznalo(int id)
         {
