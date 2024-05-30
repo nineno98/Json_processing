@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft;
 using Newtonsoft.Json;
+using System.ComponentModel.Design;
 
 
 namespace Write_to_Json_file
@@ -35,15 +36,39 @@ namespace Write_to_Json_file
     
     internal class Program
     {
+        static List<Felhasznalo> felhasznalok = new List<Felhasznalo>();
         static void Main(string[] args)
         {
+
+            menubetolt();
+
+            //string json = JsonConvert.SerializeObject(felhasznalok);
+            //Console.WriteLine(json);
+            //File.WriteAllText("result.json", json);
+            string json = File.ReadAllText("result.json");
             
-            List<Felhasznalo> felhasznalok = feltolt();
             
-            string json = JsonConvert.SerializeObject(felhasznalok);
-            Console.WriteLine(json);
-            File.WriteAllText("result.json", json);
             Console.ReadKey();
+        }
+
+        private static void menubetolt()
+        {
+            do
+            {
+                Console.WriteLine("Új felhasználó: 1 |Felhasználók lista: 2| Kilépés: 3");
+                string valaszt = Console.ReadLine();
+                if (valaszt.Equals("1"))
+                {
+                    hozzafuz();
+                }
+            } while (true);
+        }
+
+        private static void hozzafuz()
+        {
+            Felhasznalo ujfelhasznalo = ujFelhasznalo(2);
+            felhasznalok.Add(ujfelhasznalo);
+            
         }
 
         static private List<Felhasznalo> feltolt()
