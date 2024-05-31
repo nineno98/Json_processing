@@ -63,7 +63,7 @@ namespace Write_json_obj_betoltes_nelkul
 
         private static void hozzaad(string jsonItem)
         {
-            //string jsonResult = "[]";
+            
             int lastIndex = jsonResult.IndexOf(']');
             StringBuilder sb = new StringBuilder();
             if (lastIndex > 2)

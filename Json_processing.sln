@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write_to_Json_file", "Write
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write_json_obj_betoltes_nelkul", "Write_json_obj_betoltes_nelkul\Write_json_obj_betoltes_nelkul.csproj", "{B6D9BB52-8B59-421A-8BD2-2339848D44A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json_from_api", "json_from_api\json_from_api.csproj", "{18F2EAA6-2023-4DAF-952D-85ED18C03D4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B6D9BB52-8B59-421A-8BD2-2339848D44A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6D9BB52-8B59-421A-8BD2-2339848D44A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6D9BB52-8B59-421A-8BD2-2339848D44A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F2EAA6-2023-4DAF-952D-85ED18C03D4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F2EAA6-2023-4DAF-952D-85ED18C03D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F2EAA6-2023-4DAF-952D-85ED18C03D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F2EAA6-2023-4DAF-952D-85ED18C03D4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
