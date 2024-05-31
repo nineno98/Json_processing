@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json_process_from_jsonfile"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write_to_Json_file", "Write_to_Json_file\Write_to_Json_file.csproj", "{242D0D0A-88BB-4600-AD53-C8027D5BFDBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write_json_obj_betoltes_nelkul", "Write_json_obj_betoltes_nelkul\Write_json_obj_betoltes_nelkul.csproj", "{B6D9BB52-8B59-421A-8BD2-2339848D44A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{242D0D0A-88BB-4600-AD53-C8027D5BFDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{242D0D0A-88BB-4600-AD53-C8027D5BFDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{242D0D0A-88BB-4600-AD53-C8027D5BFDBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6D9BB52-8B59-421A-8BD2-2339848D44A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6D9BB52-8B59-421A-8BD2-2339848D44A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6D9BB52-8B59-421A-8BD2-2339848D44A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6D9BB52-8B59-421A-8BD2-2339848D44A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

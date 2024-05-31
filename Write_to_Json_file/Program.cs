@@ -43,8 +43,6 @@ namespace Write_to_Json_file
             listafeltolt();            
             menubetolt();       
             
-            
-            
             Console.ReadKey();
         }
 
