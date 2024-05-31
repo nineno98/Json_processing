@@ -36,22 +36,15 @@ namespace Write_json_obj_betoltes_nelkul
     {
         static string jsonResult;
         static void Main(string[] args)
-        {
+        {           
 
-            
-
-            betoltes();
-            
+            betoltes();          
             Log ujLog = logCreate();
             string jsonItem = JsonConvert.SerializeObject(ujLog);
             Console.WriteLine(ujLog);
-            hozzaad(jsonItem);
-            //hozzaad(jsonItem);
+            hozzaad(jsonItem); 
             
-
-
             Console.ReadKey();
-
         }
 
         private static void betoltes()
@@ -76,8 +69,7 @@ namespace Write_json_obj_betoltes_nelkul
             if (lastIndex > 2)
             {
                 sb.Append(',');
-            }
-            
+            }           
             sb.Append(jsonItem);
             
             jsonResult =  jsonResult.Insert(lastIndex, sb.ToString());
