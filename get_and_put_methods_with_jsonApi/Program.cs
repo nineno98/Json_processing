@@ -33,28 +33,103 @@ namespace get_and_put_methods_with_jsonApi
     internal class Program
     {
         static public List<Employer> Employers = new List<Employer>();
+
+        public static HttpClient client;
         static void Main(string[] args)
         {
+            ClientSetUp();
+            // GET:
 
-            LoadEmployers();
+            // kapcsolat tesztelése
             //TestConnection();
 
+            // összes dolgozó
+            //LoadEmployers();
+
+            //egy dolgozó név alapján
+            //var customEmployer = GetCustomEmployer("Erhart Harken");
+
+            //pagination első 10 rekord
+            //LoadEmployersLimited(10);
+            //ListOfEmloyers();
+            // POST:
+
+
+
+
+
+
+
+            Console.ReadKey();
+        }
+
+        private static void ListOfEmloyers()
+        {
             foreach (var item in Employers)
             {
                 Console.WriteLine(item);
             }
+        }
 
-            Console.ReadKey();
+        private static void ClientSetUp()
+        {
+            client = new HttpClient();
+            client.BaseAddress = new Uri("https://api-generator.retool.com/JbW1bY/");
+        }
+
+        private static async void LoadEmployersLimited(int numberOfEmployers)
+        {
+            try
+            {
+                string appurl = $"employers?_page=1&_limit={numberOfEmployers}";
+                var response = client.GetAsync(appurl).Result;
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                ProcessJsonString(jsonResponse);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static async Task<Employer> GetCustomEmployer(string name)
+        {
+            Employer customEmployer = null;
+            try
+            {     
+                string application = $"employers?name={name}";              
+                var response = client.GetAsync(application).Result;                
+                var json = JArray.Parse( await response.Content.ReadAsStringAsync());
+                if (json.Count() != 0)
+                {
+                    customEmployer = JsonConvert.DeserializeObject<Employer>(json[0].ToString());
+                    
+                    return customEmployer;
+                }
+                else
+                {
+                    return customEmployer;
+                }
+               
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+                return customEmployer;
+            }
         }
 
         public static async void LoadEmployers()
         {
             try
             {
-                var client = new HttpClient();
-                client.BaseAddress = new Uri("https://api-generator.retool.com/JbW1bY/employers");
+                string appurl = "employers";
+                
 
-                var response = client.GetAsync(client.BaseAddress).Result;
+                var response = client.GetAsync(appurl).Result;
                 var jsonResponse = await response.Content.ReadAsStringAsync();
 
                 ProcessJsonString(jsonResponse);
@@ -68,6 +143,7 @@ namespace get_and_put_methods_with_jsonApi
 
         private static void ProcessJsonString(string jsonstring)
         {
+            Employers.Clear();
             var jsonArray = JArray.Parse(jsonstring);
             foreach (var item in jsonArray)
             {
@@ -77,10 +153,7 @@ namespace get_and_put_methods_with_jsonApi
         }
 
         public static async void TestConnection()
-        {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("https://api-generator.retool.com/JbW1bY/employers");
-
+        {           
             var response = await client.GetAsync(client.BaseAddress);
             Console.WriteLine(response.StatusCode);
         }
