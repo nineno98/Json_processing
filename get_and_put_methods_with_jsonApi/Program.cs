@@ -52,7 +52,11 @@ namespace get_and_put_methods_with_jsonApi
             //pagination első 10 rekord
             //LoadEmployersLimited(10);
             //ListOfEmloyers();
+
             // POST:
+
+            AddNewEmployer();
+            ListOfEmloyers();
 
 
 
@@ -61,6 +65,57 @@ namespace get_and_put_methods_with_jsonApi
 
 
             Console.ReadKey();
+        }
+
+        private static void AddNewEmployer()
+        {
+            try
+            {
+                string apiurl = "employers";
+                LoadEmployers();
+                Employer newEmployer = CreateNewEmployer();
+                var json = JsonConvert.SerializeObject(newEmployer);
+                Console.WriteLine(json);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                var request = client.PostAsync(apiurl, content);
+                LoadEmployers();
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+            
+        }
+
+        private static Employer CreateNewEmployer()
+        {
+            Console.WriteLine("Add meg a nevet:");
+            string nev = bekeres();
+            Console.WriteLine("Add meg a fizetését:");
+            int salary = int.Parse(bekeres());
+            int id = Employers.Select(x => x.Id).Last()+1;
+            
+            Employer res = new Employer(id, nev, salary);
+            return res;
+
+        }
+
+        private static string bekeres()
+        {
+            string input = "";
+            while (true)
+            {
+                input = Console.ReadLine();
+                if (input != "" )
+                {
+                    return input;
+                }
+                else
+                {
+                    Console.WriteLine("Meg kell adni értéket.");
+                }
+            }
         }
 
         private static void ListOfEmloyers()
@@ -75,6 +130,7 @@ namespace get_and_put_methods_with_jsonApi
         {
             client = new HttpClient();
             client.BaseAddress = new Uri("https://api-generator.retool.com/JbW1bY/");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         private static async void LoadEmployersLimited(int numberOfEmployers)
