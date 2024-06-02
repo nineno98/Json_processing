@@ -54,8 +54,11 @@ namespace get_and_put_methods_with_jsonApi
             //ListOfEmloyers();
 
             // POST:
+            //Add employer
+            //AddNewEmployer();
 
-            AddNewEmployer();
+            //delete employer
+            DeleteEmployerFromID(51);
             ListOfEmloyers();
 
 
@@ -65,6 +68,25 @@ namespace get_and_put_methods_with_jsonApi
 
 
             Console.ReadKey();
+        }
+
+        private static async void DeleteEmployerFromID(int id)
+        {
+            Employer selectedEmp = SelectEmployerFromId(id);
+
+        }
+
+        public static async Task<HttpResponseMessage> DeleteJosnAsync(string uri, string value )
+        {
+            HttpResponseMessage request = new HttpResponseMessage
+            {
+                Content = ,
+
+            }
+        }
+        private static Employer SelectEmployerFromId(int id)
+        {
+            return Employers.Single(x => x.Id == id);
         }
 
         private static void AddNewEmployer()
@@ -94,9 +116,9 @@ namespace get_and_put_methods_with_jsonApi
             string nev = bekeres();
             Console.WriteLine("Add meg a fizetését:");
             int salary = int.Parse(bekeres());
-            int id = Employers.Select(x => x.Id).Last()+1;
             
-            Employer res = new Employer(id, nev, salary);
+            
+            Employer res = new Employer(nev, salary);
             return res;
 
         }
