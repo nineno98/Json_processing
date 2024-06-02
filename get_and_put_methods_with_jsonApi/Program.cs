@@ -44,7 +44,7 @@ namespace get_and_put_methods_with_jsonApi
             //TestConnection();
 
             // összes dolgozó
-            //LoadEmployers();
+            LoadEmployers();
 
             //egy dolgozó név alapján
             //var customEmployer = GetCustomEmployer("Erhart Harken");
@@ -58,7 +58,7 @@ namespace get_and_put_methods_with_jsonApi
             //AddNewEmployer();
 
             //delete employer
-            DeleteEmployerFromID(51);
+            DeleteEmployerFromID(53);
             ListOfEmloyers();
 
 
@@ -72,22 +72,40 @@ namespace get_and_put_methods_with_jsonApi
 
         private static async void DeleteEmployerFromID(int id)
         {
-            Employer selectedEmp = SelectEmployerFromId(id);
-
-        }
-
-        public static async Task<HttpResponseMessage> DeleteJosnAsync(string uri, string value )
-        {
-            HttpResponseMessage request = new HttpResponseMessage
+            try
             {
-                Content = ,
+
+                Employer selectedEmp = Employers.SingleOrDefault(x => x.Id == id);
+                if (selectedEmp != null)
+                {
+                    string apiurl = $"employers/{selectedEmp.Id}";
+                    var response = await client.DeleteAsync(apiurl);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("Success");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Employer not found.");
+                }
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("DeleteEmployerFromID: "+e.Message);
 
             }
+            
+
         }
-        private static Employer SelectEmployerFromId(int id)
-        {
-            return Employers.Single(x => x.Id == id);
-        }
+
+        
+       
 
         private static void AddNewEmployer()
         {
