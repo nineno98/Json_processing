@@ -61,8 +61,12 @@ namespace get_and_put_methods_with_jsonApi
             //DeleteEmployerFromID(53);
 
             // PUT: update employer datas
-            modifierEmployer(Employers.First());
-            ListOfEmloyers();
+           // modifierEmployer(Employers.First());
+
+            // PATCH:
+            // update property field name:
+            modifierNameOfEmployer(Employers.First());
+            //ListOfEmloyers();
 
 
 
@@ -72,6 +76,42 @@ namespace get_and_put_methods_with_jsonApi
 
             Console.ReadKey();
         }
+
+        private static async void modifierNameOfEmployer(Employer employer)
+        {
+            string appurl = $"employers/{employer.Id}";
+            Console.WriteLine("A változtatni kívánt dolgozó adatai: "+employer);
+            Console.WriteLine("Add meg az új nevet:");
+            string name = bekeres();
+            var json = "{\"Name\":\""+name+"\"}";
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            try
+            {
+                var request = new HttpRequestMessage(new HttpMethod("PATCH"), appurl)
+                {
+                    Content = content
+
+                };
+                var response = await client.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Success."+response.Content.ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Error."+response.Content);
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("modifierNameOfEmployer: "+e.Message);
+            }
+            
+        }
+
+        
 
         public static HttpContent CreateHttpContent(Employer employer)
         {
