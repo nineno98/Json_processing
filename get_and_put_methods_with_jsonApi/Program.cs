@@ -73,6 +73,14 @@ namespace get_and_put_methods_with_jsonApi
             Console.ReadKey();
         }
 
+        public static HttpContent CreateHttpContent(Employer employer)
+        {
+            var json = JsonConvert.SerializeObject(employer);
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            return content;
+        }
+
         private static async void modifierEmployer(Employer employer)
         {
             string appuri = $"employers/{employer.Id}";
@@ -80,9 +88,8 @@ namespace get_and_put_methods_with_jsonApi
             Employer ModifieredEmployer = CreateNewEmployer();
             try
             {
-                var json = JsonConvert.SerializeObject(ModifieredEmployer);
-                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
+                HttpContent content = CreateHttpContent(ModifieredEmployer);
+                
                 var response = await client.PutAsync(appuri, content);
 
                 if (response.IsSuccessStatusCode)
@@ -145,9 +152,8 @@ namespace get_and_put_methods_with_jsonApi
                 string apiurl = "employers";
                 LoadEmployers();
                 Employer newEmployer = CreateNewEmployer();
-                var json = JsonConvert.SerializeObject(newEmployer);
-                //Console.WriteLine(json);
-                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpContent content = CreateHttpContent(newEmployer);
+                
                 var request = client.PostAsync(apiurl, content);
                 LoadEmployers();
             }
