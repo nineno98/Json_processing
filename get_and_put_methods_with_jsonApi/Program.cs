@@ -58,7 +58,10 @@ namespace get_and_put_methods_with_jsonApi
             //AddNewEmployer();
 
             //delete employer
-            DeleteEmployerFromID(53);
+            //DeleteEmployerFromID(53);
+
+            // PUT: update employer datas
+            modifierEmployer(Employers.First());
             ListOfEmloyers();
 
 
@@ -68,6 +71,34 @@ namespace get_and_put_methods_with_jsonApi
 
 
             Console.ReadKey();
+        }
+
+        private static async void modifierEmployer(Employer employer)
+        {
+            string appuri = $"employers/{employer.Id}";
+            Console.WriteLine("A változtatni kívánt dolgozó adatai: "+employer+"\nÚj adatok megadása");
+            Employer ModifieredEmployer = CreateNewEmployer();
+            try
+            {
+                var json = JsonConvert.SerializeObject(ModifieredEmployer);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync(appuri, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Success.");
+                }
+                else
+                {
+                    Console.WriteLine("Error.");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("modifierEmployer: "+e);
+            }
+  
         }
 
         private static async void DeleteEmployerFromID(int id)
@@ -115,7 +146,7 @@ namespace get_and_put_methods_with_jsonApi
                 LoadEmployers();
                 Employer newEmployer = CreateNewEmployer();
                 var json = JsonConvert.SerializeObject(newEmployer);
-                Console.WriteLine(json);
+                //Console.WriteLine(json);
                 HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 var request = client.PostAsync(apiurl, content);
                 LoadEmployers();
