@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json_from_api", "json_from_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "get_and_put_methods_with_jsonApi", "get_and_put_methods_with_jsonApi\get_and_put_methods_with_jsonApi.csproj", "{DD0AEE19-2BB3-4C5A-B31D-EA6B22387F5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employers_from_rest_api", "Employers_from_rest_api\Employers_from_rest_api.csproj", "{A1982384-AED1-46CC-A467-3C04FE875D90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DD0AEE19-2BB3-4C5A-B31D-EA6B22387F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD0AEE19-2BB3-4C5A-B31D-EA6B22387F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD0AEE19-2BB3-4C5A-B31D-EA6B22387F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1982384-AED1-46CC-A467-3C04FE875D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1982384-AED1-46CC-A467-3C04FE875D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1982384-AED1-46CC-A467-3C04FE875D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1982384-AED1-46CC-A467-3C04FE875D90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
