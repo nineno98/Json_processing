@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json_from_api", "json_from_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "get_and_put_methods_with_jsonApi", "get_and_put_methods_with_jsonApi\get_and_put_methods_with_jsonApi.csproj", "{DD0AEE19-2BB3-4C5A-B31D-EA6B22387F5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employers_from_rest_api", "Employers_from_rest_api\Employers_from_rest_api.csproj", "{A1982384-AED1-46CC-A467-3C04FE875D90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employers_from_api_GUI", "Employers_from_rest_api\Employers_from_api_GUI.csproj", "{A1982384-AED1-46CC-A467-3C04FE875D90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
