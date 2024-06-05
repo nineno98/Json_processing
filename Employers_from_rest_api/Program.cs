@@ -17,6 +17,7 @@ namespace Employers_from_rest_api
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
         }
     }
 }

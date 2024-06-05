@@ -19,8 +19,10 @@ namespace Employers_from_rest_api
     {
         private HttpClient client;
         private List<Employer> employers;
+        Form2 form2;
         public Form1()
         {
+            
             employers = new List<Employer>();
             ClientSetup();
             InitializeComponent();
@@ -47,7 +49,7 @@ namespace Employers_from_rest_api
             dataGridView1.Columns["Salary"].DataPropertyName = "Salary";
 
             dataGridView1.DataSource = employers;
-            label1.Text = employers.Count().ToString();
+            
         }
 
         private async void GetEmployers()
@@ -58,12 +60,11 @@ namespace Employers_from_rest_api
             {
                 var response = client.GetAsync(appurl).Result;
                 var jsonresponse = await response.Content.ReadAsStringAsync();
-                //MessageBox.Show(jsonresponse);
+                
                 var jsonArray = JArray.Parse(jsonresponse);
                 foreach (var item in jsonArray)
                 {
-                    Employer emp = JsonConvert.DeserializeObject<Employer>(item.ToString());
-                    //MessageBox.Show(emp.ToString());
+                    Employer emp = JsonConvert.DeserializeObject<Employer>(item.ToString());                    
                     employers.Add(emp);
                 }
             }
@@ -76,6 +77,24 @@ namespace Employers_from_rest_api
             
             
 
+        }
+
+        private void modifiEmployer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Employer selectedEmployer = dataGridView1.SelectedRows[0].DataBoundItem as Employer;
+                label1.Text = selectedEmployer.ToString();
+                form2 = new Form2();
+                form2.Employer = selectedEmployer;
+                form2.ShowDialog();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Egy sor ki kell jelölni a módosításhoz!");
+            }
+            
         }
     }
 }

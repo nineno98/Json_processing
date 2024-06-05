@@ -61,6 +61,7 @@
             this.modifiEmployer.TabIndex = 2;
             this.modifiEmployer.Text = "Módosítás...";
             this.modifiEmployer.UseVisualStyleBackColor = true;
+            this.modifiEmployer.Click += new System.EventHandler(this.modifiEmployer_Click);
             // 
             // deleteEmployer
             // 
