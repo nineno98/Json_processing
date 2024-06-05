@@ -39,6 +39,14 @@ namespace Employers_from_rest_api
         {
 
             GetEmployers();
+            LoadDatagridview();
+            
+            
+            
+        }
+
+        private void LoadDatagridview()
+        {
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Add("Id", "Id");
             dataGridView1.Columns.Add("Name", "Name");
@@ -49,7 +57,6 @@ namespace Employers_from_rest_api
             dataGridView1.Columns["Salary"].DataPropertyName = "Salary";
 
             dataGridView1.DataSource = employers;
-            
         }
 
         private async void GetEmployers()
@@ -97,6 +104,18 @@ namespace Employers_from_rest_api
 
                 MessageBox.Show("Egy sor ki kell jelölni a módosításhoz!");
             }
+            
+        }
+
+        private void newEmployer_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.ShowDialog();
+            
+            employers.Clear();
+            GetEmployers();
+            
+            LoadDatagridview();
             
         }
     }

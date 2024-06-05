@@ -52,6 +52,7 @@
             this.newEmployer.TabIndex = 1;
             this.newEmployer.Text = "Új dolgozó...";
             this.newEmployer.UseVisualStyleBackColor = true;
+            this.newEmployer.Click += new System.EventHandler(this.newEmployer_Click);
             // 
             // modifiEmployer
             // 
