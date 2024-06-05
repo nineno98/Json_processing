@@ -88,6 +88,9 @@ namespace Employers_from_rest_api
                 form2 = new Form2();
                 form2.Employer = selectedEmployer;
                 form2.ShowDialog();
+                employers.Clear();
+                GetEmployers();
+
             }
             catch (Exception)
             {
